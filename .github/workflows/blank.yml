@@ -14,8 +14,8 @@ jobs:
 
       - name: Set up Git
         run: |
-          git config --global user.email "action@github.com"
-          git config --global user.name "GitHub Action"
+          git config --global user.email "sachinpereira1995@gmail.com"
+          git config --global user.name "SachinPereira"
 
       - name: Create and Commit File
         run: |
