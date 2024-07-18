@@ -23,12 +23,16 @@ jobs:
           git add newfile.txt
           git commit -m "Add newfile.txt via GitHub Action"
 
-      - name: Push changes
-        env:
-          TARGET_REPO_URL: https://github.com/SachinP/SpringWithSonor.git  # Replace with your target repository URL
+      - name: Make changes
         run: |
-          git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Actions"
-          git add .
-          git commit -m "Automated push by GitHub Actions"
-          git push ${{ secrets.GITHUB_TOKEN }} HEAD:master
+          echo "Updated README" >> README.md
+          git add README.md
+          git commit -m "Automated commit by GitHub Actions"
+      
+      - name: Push changes to target repository
+        env:
+          TARGET_REPO_URL: https://github.com/SachinPereira/SpringWithSonor.git  # Replace with your target repository URL
+          TARGET_REPO_BRANCH: main  # Replace with your target branch name
+          PAT: ${{ secrets.PAT }}  # Use your GitHub PAT secret
+        run: |
+          git push https://$PAT@github.com/SachinP/SpringWithSonor.git HEAD:$TARGET_REPO_BRANCH
