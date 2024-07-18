@@ -1,0 +1,32 @@
+name: Commit File to Another Repository
+
+on:
+  push:
+    branches:
+      - main  # Replace with your branch name
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Git
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+
+      - name: Create and Commit File
+        run: |
+          echo "Hello, World!" > newfile.txt  # Replace with your file content and name
+          git add newfile.txt
+          git commit -m "Add newfile.txt via GitHub Action"
+
+      - name: Push changes
+        env:
+          TARGET_REPO_URL: <target_repository_url>  # Replace with your target repository URL
+          TARGET_REPO_BRANCH: main  # Replace with your target branch name
+          PAT: ${{ secrets.PAT }}  # Use your GitHub PAT secret
+        run: |
+          git push https://$PAT@github.com/$TARGET_REPO_URL.git HEAD:$TARGET_REPO_BRANCH
