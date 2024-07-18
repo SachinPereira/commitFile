@@ -19,7 +19,7 @@ jobs:
 
       - name: Create and Commit File
         run: |
-          echo "Hello, World!" > newfile.txt  # Replace with your file content and name
+          echo "Hello, World!" > newfile.txt  # Replace with your file content and name.
           git add newfile.txt
           git commit -m "Add newfile.txt via GitHub Action"
 
