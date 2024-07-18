@@ -29,4 +29,4 @@ jobs:
           TARGET_REPO_BRANCH: main  # Replace with your target branch name
           PAT: ${{ secrets.PAT }}  # Use your GitHub PAT secret
         run: |
-          git push https://$PAT@github.com/https://github.com/SachinPereira/SpringWithSonor.git HEAD:master
+            git push https://$PAT@gitHub.com/SachinPereira/SpringWithSonor.git HEAD:master
